@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/J1ng00/Ignite2024-WebApp/mvc/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -19,4 +20,8 @@ func ConnectToDatabase() {
 	if err != nil {
 		fmt.Println("Failed to connect to database")
 	}
+}
+
+func SyncDB() {
+	DB.AutoMigrate(&models.Post{})
 }
