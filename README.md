@@ -12,6 +12,12 @@ npm install --save-dev @types/react @types/react-dom
 npm install --save-dev esbuild
 npm install --save-dev esbuild-sass-plugin
 npm install --save react-router-dom       
+npm install -D tailwindcss
+npx tailwindcss init
 
 starting the DB
 net start postgresql-x64-16     
+
+to run 
+CompileDaemon --command="./mvc"
+npm run dev (builds the site)
