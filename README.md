@@ -7,6 +7,7 @@ go get -u gorm.io/driver/postgres
 go get github.com/joho/godotenv  
 go get github.com/gofiber/fiber/v2   
 go get github.com/gofiber/template/html/v2
+go install github.com/githubnemo/CompileDaemon@latest
 npm install react react-dom
 npm install --save-dev @types/react @types/react-dom
 npm install --save-dev esbuild

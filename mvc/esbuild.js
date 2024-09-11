@@ -7,6 +7,9 @@ esbuild
     outdir: "public/assets",
     bundle: true,
     minify: true,
+    define: {
+      'process.env.NODE_ENV': '"development"',  // Set environment to development
+    },
     plugins: [sassPlugin()],
   })
   .then(() => {
