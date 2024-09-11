@@ -9,20 +9,29 @@ const Home = () => {
       }}
       className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col items-center justify-center"
     >
-      <h1 className="text-4xl font-bold text-white mb-8">IGNITE 2024</h1>
-      
-      <nav className="space-x-4">
-        <Link 
-          to="/Floorplan" 
-          className="text-xl text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
-          Floorplan
-        </Link>
-        <Link 
-          to="/Forms" 
-          className="text-xl text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition duration-300">
-          Recommend a booth!!!!??
-        </Link>
-      </nav>
+    <nav className="py-8 flex flex-col text-center">
+    <Link 
+      to="/Forms" 
+      style={{ 
+        backgroundColor: '#ef4444', // This is the equivalent color for `bg-red-500`
+       marginBottom: '16px' // Adds spacing between the buttons
+      }} 
+      className="text-xl text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300">
+      Recommend a booth
+    </Link>
+    <Link 
+      to="/Floorplan" 
+      style={{ marginBottom: '16px' }}  // Adds spacing between the buttons
+      className="text-xl text-white bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
+      Floorplan
+    </Link>
+    <Link 
+      to="/Company" 
+      className="text-xl text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition duration-300">
+      Company Bio
+    </Link>
+  </nav>
+
     </div>
   );
 };

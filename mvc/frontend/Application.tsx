@@ -4,6 +4,7 @@ import {BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home';
 import Forms from './pages/Forms';
 import Floorplan from './pages/Floorplan';
+import Company from './pages/Company';
 
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.querySelector('#application');
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <Route index element = {<Home/>} />
                 <Route path="/Forms" element = {<Forms/>} />
                 <Route path="/Floorplan" element = {<Floorplan/>} />
+                <Route path="/Company" element = {<Company/>} />
             </Routes>
         </BrowserRouter>
     )

@@ -32,6 +32,7 @@ func main() {
 		"/",
 		"/Forms",
 		"/Floorplan",
+		"/Company",
 	}
 
 	for _, route := range frontendRoutes {
