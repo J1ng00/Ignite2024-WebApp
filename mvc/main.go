@@ -1,33 +1,42 @@
 package main
 
 import (
+	"log"
 	"os"
 
 	"github.com/J1ng00/Ignite2024-WebApp/mvc/controllers"
 	"github.com/J1ng00/Ignite2024-WebApp/mvc/initializers"
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/template/html/v2"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
-	initializers.ConnectToDatabase()
-	initializers.SyncDB()
+	initializers.LoadEnvVariables()  // Load environment variables
+	initializers.ConnectToDatabase() // Connect to the database
+	initializers.SyncDB()            // Sync the database
 }
 
 func main() {
-	//load templates
+	// Load templates
 	engine := html.New("./views", ".html")
 
-	//Setup App
+	// Setup Fiber app
 	app := fiber.New(fiber.Config{
 		Views: engine,
 	})
 
-	//configure app
+	// Enable CORS middleware (allow requests from any origin)
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*", // Allow all origins
+		AllowMethods: "GET,POST,PUT,DELETE,OPTIONS",
+		AllowHeaders: "Content-Type",
+	}))
+
+	// Serve static files
 	app.Static("/", "./public")
 
-	//routes
+	// Define frontend routes
 	frontendRoutes := []string{
 		"/",
 		"/Forms",
@@ -39,6 +48,11 @@ func main() {
 		app.Get(route, controllers.PostsIndex)
 	}
 
-	//start app
-	app.Listen(":" + os.Getenv("PORT"))
+	// Define API routes for handling posts
+	app.Post("/posts", controllers.CreatePost) // POST request to create a new post
+	app.Get("/posts", controllers.GetPosts)    // GET request to fetch posts
+
+	// Start the Fiber app on the specified port
+	log.Println("Server running on port " + os.Getenv("PORT"))
+	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
 }

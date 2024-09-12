@@ -4,6 +4,7 @@ import "gorm.io/gorm"
 
 type Post struct {
 	gorm.Model
-	Title string
-	Body  string
+	Industry     string `json:"industry"`
+	Skills       string `json:"skills"`
+	JobSelection string `json:"job_selection"`
 }

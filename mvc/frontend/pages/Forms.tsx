@@ -20,11 +20,28 @@ const Forms = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
-    event.preventDefault();
-    // Handle form submission
-    console.log(formData);
+  const submitForm = async (formData) => {
+    formData.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:3000/posts', { // Use port 3000
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData), // Send form data as JSON
+      });
+  
+      if (response.ok) {
+        console.log("Form submitted successfully:", response.status);
+      } else {
+        console.error("Failed to submit form:", response.status);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
+  
 
   return (
     <div
@@ -35,7 +52,7 @@ const Forms = () => {
     >
       {/* Form */}
       <div className="max-w-xl w-full p-6 bg-white rounded shadow-lg flex flex-col items-center justify-center">
-        <form onSubmit={handleSubmit} className="space-y-6 w-full">
+        <form onSubmit={submitForm} className="space-y-6 w-full">
           <h2 className="text-2xl font-bold mb-4 text-center">Job Interest Form</h2>
 
           {/* Wrap the question in a div with a gray border */}
