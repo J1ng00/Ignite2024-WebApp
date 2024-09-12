@@ -48,9 +48,12 @@ func main() {
 		app.Get(route, controllers.PostsIndex)
 	}
 
-	// Define API routes for handling posts
-	app.Post("/posts", controllers.CreatePost) // POST request to create a new post
-	app.Get("/posts", controllers.GetPosts)    // GET request to fetch posts
+	app.Post("/posts", func(c *fiber.Ctx) error {
+		return controllers.CreatePost(c, initializers.DB) // Pass DB
+	})
+	app.Get("/posts", func(c *fiber.Ctx) error {
+		return controllers.GetPosts(c, initializers.DB) // Pass DB
+	})
 
 	// Start the Fiber app on the specified port
 	log.Println("Server running on port " + os.Getenv("PORT"))

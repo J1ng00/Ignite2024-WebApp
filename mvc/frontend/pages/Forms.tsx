@@ -15,13 +15,16 @@ const Forms = () => {
     jobPosition: ''
   });
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
-  const submitForm = async (formData) => {
-    formData.preventDefault();
+  const submitForm = async (event) => {
+    event.preventDefault();
 
     try {
       const response = await fetch('http://localhost:3000/posts', { // Use port 3000
@@ -63,7 +66,7 @@ const Forms = () => {
               <select
                 name="industry"
                 value={formData.industry}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 className="block w-full mt-2 p-2 border border-gray-300 rounded"
               >
                 <option value="">-- Select an Industry --</option>
@@ -88,7 +91,7 @@ const Forms = () => {
               <select
                 name="skills"
                 value={formData.skills}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 className="block w-full mt-2 p-2 border border-gray-300 rounded"
               >
                 <option value="">-- Select Your Skills --</option>
@@ -113,7 +116,7 @@ const Forms = () => {
               <select
                 name="jobPosition"
                 value={formData.jobPosition}
-                onChange={handleInputChange}
+                onChange={handleChange}
                 className="block w-full mt-2 p-2 border border-gray-300 rounded"
               >
                 <option value="">-- Select a Position --</option>
