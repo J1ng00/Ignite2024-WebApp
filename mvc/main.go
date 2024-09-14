@@ -56,5 +56,5 @@ func main() {
 
 	// Start the Fiber app on the specified port
 	log.Println("Server running on port " + os.Getenv("PORT"))
-	log.Fatal(app.Listen(":" + os.Getenv("PORT")))
+	log.Fatal(app.Listen("0.0.0.0:" + os.Getenv("PORT")))
 }
