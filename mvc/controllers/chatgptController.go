@@ -28,7 +28,7 @@ func RecommendCompany(c *fiber.Ctx) error {
 	companies := make(chan []models.IgniteCompany)
 	go func() {
 		var results []models.IgniteCompany
-		result := initializers.DB.Where("industry = ?", input.Industry).Find(&results)
+		result := initializers.DB.Where("\"Industry\" = ?", input.Industry).Find(&results)
 		if result.Error != nil {
 			log.Println("Failed to query companies:", result.Error)
 		}
