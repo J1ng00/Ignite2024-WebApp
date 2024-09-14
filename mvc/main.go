@@ -48,9 +48,8 @@ func main() {
 		app.Get(route, controllers.PostsIndex)
 	}
 
-	app.Post("/posts", func(c *fiber.Ctx) error {
-		return controllers.CreatePost(c, initializers.DB) // Pass DB
-	})
+	app.Post("/posts", controllers.RecommendCompany)
+
 	app.Get("/posts", func(c *fiber.Ctx) error {
 		return controllers.GetPosts(c, initializers.DB) // Pass DB
 	})

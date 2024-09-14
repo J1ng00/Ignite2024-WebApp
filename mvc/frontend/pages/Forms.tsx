@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // Define the type for the form data
 interface FormData {
@@ -15,6 +16,9 @@ const Forms = () => {
     jobPosition: ''
   });
 
+  const [recommendation, setRecommendation] = useState('');
+  const navigate = useNavigate();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -25,9 +29,9 @@ const Forms = () => {
 
   const submitForm = async (event) => {
     event.preventDefault();
-
+  
     try {
-      const response = await fetch('http://localhost:3000/posts', { // Use port 3000
+      const response = await fetch('http://localhost:3000/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,6 +41,11 @@ const Forms = () => {
   
       if (response.ok) {
         console.log("Form submitted successfully:", response.status);
+        const result = await response.json();
+        setRecommendation(result.recommendation);
+  
+        // Pass the recommendation data to the Company page
+        navigate('/Company', { state: { recommendation: result.recommendation } });
       } else {
         console.error("Failed to submit form:", response.status);
       }
@@ -44,6 +53,7 @@ const Forms = () => {
       console.error("Error:", error);
     }
   };
+  
   
 
   return (
@@ -70,16 +80,16 @@ const Forms = () => {
                 className="block w-full mt-2 p-2 border border-gray-300 rounded"
               >
                 <option value="">-- Select an Industry --</option>
-                <option value="Technology">Technology</option>
-                <option value="Finance">Finance</option>
-                <option value="Healthcare">Healthcare</option>
-                <option value="Education">Education</option>
-                <option value="Retail">Retail</option>
-                <option value="Manufacturing">Manufacturing</option>
-                <option value="Consulting">Consulting</option>
-                <option value="Hospitality">Hospitality</option>
-                <option value="Energy">Energy</option>
-                <option value="Other">Other</option>
+                <option value="Accountancy/Consulting ">Accountancy/Consulting </option>
+                <option value="Banking and Finance">Banking and Finance</option>
+                <option value="Financial Services ">Financial Services </option>
+                <option value="Government/Public Sector">Government/Public Sector</option>
+                <option value="Hospitality, Recreation and Leisure & Lifestyle">Hospitality, Recreation and Leisure & Lifestyle</option>
+                <option value="Human Resources/Recruitment & Staffing">Human Resources/Recruitment & Staffing</option>
+                <option value="IT Services and Consulting">IT Services and Consulting</option>
+                <option value="Media & Communications">Media & Communications</option>
+                <option value="Retail and Consumer Goods">Retail and Consumer Goods</option>
+                <option value="Social Services">Social Services</option>
               </select>
             </label>
           </div>
@@ -120,15 +130,16 @@ const Forms = () => {
                 className="block w-full mt-2 p-2 border border-gray-300 rounded"
               >
                 <option value="">-- Select a Position --</option>
-                <option value="Software Engineer">Software Engineer</option>
-                <option value="Data Scientist">Data Scientist</option>
-                <option value="Marketing Specialist">Marketing Specialist</option>
-                <option value="Sales Representative">Sales Representative</option>
-                <option value="Financial Analyst">Financial Analyst</option>
-                <option value="Product Manager">Product Manager</option>
+                <option value="Accounting & Finance">Accounting & Finance</option>
+                <option value="Administration & Office Support">Administration & Office Support</option>
+                <option value="Creative & Design">Creative & Design</option>
+                <option value="Human Resource">Human Resource</option>
+                <option value="Marketing & Communications">Marketing & Communications</option>
+                <option value="Operations & Supply Chain">Operations & Supply Chain</option>
                 <option value="Human Resources Manager">Human Resources Manager</option>
-                <option value="Operations Manager">Operations Manager</option>
-                <option value="Consultant">Consultant</option>
+                <option value="Public Sector & Government">Public Sector & Government</option>
+                <option value="Sales">Sales</option>
+                <option value="Technology & IT">Technology & IT</option>
                 <option value="Other">Other</option>
               </select>
             </label>

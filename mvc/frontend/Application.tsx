@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <Routes> 
                 <Route index element = {<Home/>} />
                 <Route path="/Forms" element = {<Forms/>} />
-                <Route path="/Floorplan" element = {<Floorplan/>} />
+                {/*<Route path="/Floorplan" element = {<Floorplan/>} />*/}
                 <Route path="/Company" element = {<Company/>} />
             </Routes>
         </BrowserRouter>
