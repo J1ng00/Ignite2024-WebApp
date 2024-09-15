@@ -41,7 +41,11 @@ const Home = () => {
         {/* Company Bio Link */}
         <Link 
           to="/Company" 
-          className="text-xl text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition duration-300">
+          className="text-xl text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition duration-300"
+          style={{ 
+            marginBottom: '16px',
+            backgroundColor: '#22c55e'  // Equivalent to Tailwind's bg-blue-500
+          }} >
           Company Bio
         </Link>
 
@@ -52,7 +56,7 @@ const Home = () => {
           rel="noopener noreferrer"
           style={{ 
             marginBottom: '16px',
-            backgroundColor: '#a16207'  // Equivalent to Tailwind's bg-blue-500
+            backgroundColor: '#eab308'  // Equivalent to Tailwind's bg-blue-500
           }}  
           className="text-xl text-white px-4 py-2 rounded hover:bg-yellow-700 transition duration-300"
         >
