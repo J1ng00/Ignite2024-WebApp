@@ -53,7 +53,7 @@ const Company = () => {
         style={{
           backgroundImage: `url('/assets/background.jpg')`,
         }}
-        className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col items-center justify-center"
+        className="bg-cover bg-center bg-no-repeat min-h-screen w-full flex flex-col items-center justify-center"
       >
         <h2>No recommendation available.</h2>
         <button
