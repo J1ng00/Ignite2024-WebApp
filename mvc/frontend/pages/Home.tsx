@@ -21,7 +21,7 @@ const Home = () => {
             marginBottom: '16px' // Adds spacing between the buttons
           }} 
           className="text-xl text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300">
-          Recommend a booth
+          Recommend Booth
         </Link>
 
         {/* Floorplan - Opens PDF in a New Tab */}
