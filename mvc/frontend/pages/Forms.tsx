@@ -31,7 +31,7 @@ const Forms = () => {
     event.preventDefault();
   
     try {
-      const response = await fetch('http://3.140.200.89:3000/posts', {
+      const response = await fetch('http://13.59.94.228:3000/posts', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
