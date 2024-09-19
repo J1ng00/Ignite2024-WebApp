@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 const Home = () => {
   const floorplan = "https://ignite2024.s3.us-east-2.amazonaws.com/IGNITE+2024+-+Floorplan+-+21Aug2024+-+FINAL.pdf";
   const studentguide = "https://ignite2024.s3.us-east-2.amazonaws.com/IGNITE'24+Student+Event+Guide+Revised_compressed.pdf";
+  const companybio = "https://ignite2024.s3.us-east-2.amazonaws.com/Ignite+Company+EDM_compressed.pdf"; 
 
   return (
     <div
@@ -39,15 +40,18 @@ const Home = () => {
         </a>
 
         {/* Company Bio Link */}
-        <Link 
-          to="/Company" 
-          className="text-xl text-white bg-green-500 px-4 py-2 rounded hover:bg-green-700 transition duration-300"
+        <a 
+          href={companybio} 
+          target="_blank" 
+          rel="noopener noreferrer"
           style={{ 
             marginBottom: '16px',
             backgroundColor: '#22c55e'  // Equivalent to Tailwind's bg-blue-500
-          }} >
+          }}  
+          className="text-xl text-white px-4 py-2 rounded hover:bg-green-700 transition duration-300"
+        >
           Company Bio
-        </Link>
+        </a>
 
          {/* student guide - Opens PDF in a New Tab */}
         <a 
